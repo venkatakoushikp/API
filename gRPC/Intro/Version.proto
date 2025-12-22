@@ -1,0 +1,30 @@
+// Basic Proto file. In this example, we would just be returning the Codename based on the Input version. 
+// Example. /ListAll to return all /ListOne(2025.3.0) ==> Uvas, Etc
+
+syntax = "proto3"; // Protocol Buffer version we use
+
+package VersionInfo; 
+
+option go_package = "./Intro_pb;pb"; // package name is set to pb, Can be anything!!
+
+message absoluteVersion{
+    string version = 1; // These indices would be used to encode the req as protobuf
+}
+
+message Codename{
+    string package = 1;
+    string codename = 2;
+}
+
+message nil {
+
+}
+
+service versionInfo {
+    rpc getCodeName (absoluteVersion) returns (Codename);
+    rpc getAbsoluteName (Codename) returns (absoluteVersion);
+    rpc AddCodeName (absoluteVersion) returns (nil);
+}
+
+
+l
