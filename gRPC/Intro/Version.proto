@@ -20,11 +20,16 @@ message nil {
 
 }
 
+message VerInfo {
+    Codename cn = 1;
+    absoluteVersion ab = 2;
+}
+
 service versionInfo {
-    rpc getCodeName (absoluteVersion) returns (Codename);
-    rpc getAbsoluteName (Codename) returns (absoluteVersion);
-    rpc AddCodeName (absoluteVersion) returns (nil);
+    rpc GetCodeName (absoluteVersion) returns (Codename);
+    rpc GetAbsoluteName (Codename) returns (absoluteVersion);
+    rpc AddCodeName (VerInfo) returns (nil);
+    
 }
 
 
-l
